@@ -1,3 +1,7 @@
+# Altair SmartEdge UI Team Fit Assessment Project
+
+A two-day test to assess Henry's fit for the Altair SmartEdge UI Team
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
