@@ -1,11 +1,14 @@
+
 function parseRequestParams(description, location, fullTime) {
   // TODO: Optimize this clunky mess (with iterator?)
   let outputString = '';
   if (description) {
+    console.log(`got description. Adding ${description.replace(' ', '+')}`);
     outputString += `description=${description.replace(' ', '+')}`;
   }
   if (location) {
     if (outputString) {
+      console.log(`got location. Adding ${location.replace(' ', '+')}`);
       outputString += '&';
     }
     outputString += `location=${location.replace(' ', '+')}`;
@@ -23,10 +26,14 @@ function parseRequestParams(description, location, fullTime) {
 
 export const GitHubAPI = {
   search(description = '', location = '', fullTime = false, stateSetCallback) {
+    console.log(`initials are ${description}, ${location}, ${fullTime}`);
     const requestParams = parseRequestParams(description, location, fullTime);
-
+    console.log(`requestParams are ${requestParams}`);
     // Request
-    fetch(`https://jobs.github.com/positions.json?description=test`)
+    fetch(`http://jobs.github.com/positions.json?${requestParams}`, {
+      method: 'GET',
+      mode: 'cors'
+    })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -39,12 +46,14 @@ export const GitHubAPI = {
     .then(positions => positions.map(({ // destructure each object and return only some of the keys
       id,
       title,
+      location,
       type,
       created_at,
       company
     }) => ({
       id,
       title,
+      location,
       type,
       created_at,
       company
