@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './QueriesBar.css';
 
-export class QueriesBar extends React.Component {
+import { inspect } from 'util';
+
+export class QueriesBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +16,18 @@ export class QueriesBar extends React.Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleFullTimeChange = this.handleFullTimeChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.clearResults = this.clearResults.bind(this);
   }
 
   search() {
-    const { description, location, fullTime } = this.state;
+    const { description='', location='', fullTime=false } = this.state;
     // We'll handle search in the parent (App) component
     this.props.onSearch(description, location, fullTime);
+  }
+
+  clearResults() {
+    this.props.onClear();
   }
 
   handleDescriptionChange(e) {
@@ -32,30 +40,42 @@ export class QueriesBar extends React.Component {
 
   handleFullTimeChange(e) {
     this.setState({ fullTime: e.target.checked });
+    console.log(`changed fullTime; state is now ${inspect(this.state)}`);
+  }
+
+  handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      this.search();
+    }
   }
 
   render() {
     return (
       <div className="QueriesBar">
         <input
-          className="descriptionField"
+          className="text-field"
           placeholder="Enter a Job Title, Company, or Description"
           onChange={this.handleDescriptionChange}
+          onKeyDown={this.handleKeyDown}
         />
         <input
-          className="locationField"
+          className="text-field"
           placeholder="Enter a City, State, ZIP Code, or Country"
-          onChange={this.handleDescriptionChange}
+          onChange={this.handleLocationChange}
+          onKeyDown={this.handleKeyDown}
         />
         <label>
           <input
-            className="fullTimeCheckbox"
+            className="checkbox-field"
             type="checkbox"
-            onChange={this.handleDescriptionChange}
+            onChange={this.handleFullTimeChange}
+            onKeyDown={this.handleKeyDown}
           />
           Show full-time positions only
         </label>
-        <a onClick={this.search}>Search</a>
+
+        <a className="button-confirm" onClick={this.search}>Search</a>
+        <a className="button-cancel" onClick={this.clearResults}>Clear</a>
       </div>
     );
   }
