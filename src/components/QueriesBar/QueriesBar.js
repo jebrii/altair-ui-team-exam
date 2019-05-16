@@ -74,8 +74,8 @@ export class QueriesBar extends Component {
           Show full-time positions only
         </label>
 
-        <a className="button-confirm" onClick={this.search}>Search</a>
-        <a className="button-cancel" onClick={this.clearResults}>Clear</a>
+        <button className="button-confirm" onClick={this.search}>Search</button>
+        <button className="button-cancel" onClick={this.clearResults}>Clear</button>
       </div>
     );
   }

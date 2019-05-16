@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { inspect } from 'util';
-
 // Import Components
 import { QueriesBar } from '../QueriesBar/QueriesBar';
 import ResultsList from '../ResultsList/ResultsList';
@@ -28,8 +26,8 @@ const months = {
 };
 
 const parseDateString = (inputString) => {
-  const bits = inputString.split(' ');
-  return `${bits[5]}-${months[bits[1]]}-${bits[2]} ${bits[3]} ${bits[4]}`;
+  const date = new Date(inputString);
+  return `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
 }
 
 const columns = [
@@ -73,6 +71,7 @@ class App extends Component {
     // ... but that's not how I learned it initially; I'm sticking with my norms
     this.search = this.search.bind(this);
     this.clearResults = this.clearResults.bind(this);
+    this.parsePositions = this.parsePositions.bind(this);
   }
 
   search(description, location, fullTime) {
@@ -89,6 +88,21 @@ class App extends Component {
     })
   }
 
+  parsePositions(positions, columns) {
+    return positions.map((position, index) => {
+      for (let i in position) {
+        columns.forEach(column => {
+          if (column.prop === i) {
+            console.log(`matched ${console.log(require('util').inspect(column))} with ${console.log(require('util').inspect(position))}`);
+          }
+        })
+      }
+      // const { parseFunction = i => i } = columns[index];
+      // parseFunction()
+      return position;
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -98,8 +112,7 @@ class App extends Component {
           </h1>
         </div>
         <QueriesBar onSearch={this.search} onClear={this.clearResults} />
-        {console.log(`rendering search results with ${inspect(this.state.searchResults)}`)}
-        <ResultsList positions={this.state.searchResults || []} columns={columns} />
+        <ResultsList positions={this.parsePositions(this.state.searchResults, columns) || []} columns={columns} />
 
       </div>
     );

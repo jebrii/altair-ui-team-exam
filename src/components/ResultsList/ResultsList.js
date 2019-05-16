@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './ResultsList.css';
 
-import { inspect } from 'util';
-
 import ResultItem from '../ResultItem/ResultItem.js'
 
 export default class ResultsList extends Component {
@@ -42,14 +40,13 @@ export default class ResultsList extends Component {
   sortData(positions, columns) {
     const { index, direction } = this.state.sortColumn;
     if (index) {
-      const sortByProp = Object.values(columns)[index].prop;
-      console.log(`sortByProp: ${sortByProp}`);
+      const sortByProp = columns[index].prop;
       const sortFunc = (a, b) => {
-        if (a[sortByProp] == b[sortByProp]) return 0;
-        return a[sortByProp] > b[sortByProp] ? 1 : -1;
+        if (a[sortByProp] === b[sortByProp]) return 0;
+        return a[sortByProp].toUpperCase() > b[sortByProp].toUpperCase() ? 1 : -1;
       }
       let sortedPositions = [...positions].sort(sortFunc);
-      if (direction == 'asc') {
+      if (direction === 'asc') {
         sortedPositions.reverse()
       }
       return sortedPositions;
@@ -60,23 +57,23 @@ export default class ResultsList extends Component {
 
   renderSortImage(column, index) {
     if (column.sortable) {
-      if (this.state.sortColumn.index == index) {
-        if (this.state.sortColumn.direction == 'asc') {
+      if (this.state.sortColumn.index === index) {
+        if (this.state.sortColumn.direction === 'asc') {
           return (
-            <img className="up-arrow" />
+            <img className="up-arrow" alt="⬆" />
           );
         } else {
           return (
-            <img className="down-arrow" />
+            <img className="down-arrow" alt="⬇" />
           );
         }
       }
       return (
-        <img className="placeholder" />
+        <img className="placeholder" alt="🗙" />
       );
     } else {
       return (
-        <img className="x" />
+        <img className="no-sort" alt="✖" />
       );
     }
   }

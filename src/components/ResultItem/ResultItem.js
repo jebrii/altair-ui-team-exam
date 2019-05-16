@@ -5,9 +5,9 @@ export default function ResultItem({columns, position, index}) {
   return (
     <tr key={index}>
       {
-        columns.map(({ prop, parseFunction = i => i }) => {
+        columns.map(({ prop }) => {
           return (
-            <td>{parseFunction(position[prop])}</td>
+            <td>{position[prop]}</td>
           );
         })
       }
