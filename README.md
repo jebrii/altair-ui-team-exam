@@ -141,3 +141,13 @@ as traditional functions and binding them in the constructor.
 Andrew has informed me that I cannot continue my development career on good terms at
 Altair if I continue my semicolon use. Consider this my last stand, then. I refer
 you in good humor to the [Semicolon Appreciation Society](http://semicolonappreciationsociety.com/).
+
+### Future Features
+
+In future, I would add pagination to this app. GitHub returns only 50 entries per request, so I'd want the user to be able to click "more" (or something
+to that effect) and be able to get a new batch of results.
+<br><br>
+I think it's ugly that the ResultsList table is still rendered when there are no
+results. I would have the rendering be conditional upon there being props. This is easy, but out of scope and low on the priority list.
+<br><br>
+There also should be a "No entries found" feature when the query returns no results.
