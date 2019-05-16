@@ -112,11 +112,11 @@ Here are some personal notes on the project.
 These features were not laid out in the scope, but were added for functionality
 or flair.
 
-####Clear
+#### Clear
 
 I added a "Clear" button next to the "Search" button to clear the search Results.
 
-####Sort Setting is Remembered
+#### Sort Setting is Remembered
 
 Part of the challenge of sorting for me was that I decided early on that the sort
 "setting" (that is to say, the column and order of sort) should not be overwritten
