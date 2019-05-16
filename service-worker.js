@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/altair-ui-team-exam/precache-manifest.887a199b71764be7a9e46616c17eb6d0.js"
+  "/altair-ui-team-exam/precache-manifest.66fd4cc8c653a3613f4e3cb522e3ae42.js"
 );
 
 self.addEventListener('message', (event) => {
