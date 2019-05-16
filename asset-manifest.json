@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.70b0ffa2.chunk.css",
-    "main.js": "/static/js/main.70d07635.chunk.js",
-    "main.js.map": "/static/js/main.70d07635.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.642f0b0a.chunk.js": "/static/js/2.642f0b0a.chunk.js",
-    "static/js/2.642f0b0a.chunk.js.map": "/static/js/2.642f0b0a.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.1fa18403ff928187c83d065c316039ce.js": "/precache-manifest.1fa18403ff928187c83d065c316039ce.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.70b0ffa2.chunk.css.map": "/static/css/main.70b0ffa2.chunk.css.map"
+    "main.css": "/altair-ui-team-exam/static/css/main.70b0ffa2.chunk.css",
+    "main.js": "/altair-ui-team-exam/static/js/main.70d07635.chunk.js",
+    "main.js.map": "/altair-ui-team-exam/static/js/main.70d07635.chunk.js.map",
+    "runtime~main.js": "/altair-ui-team-exam/static/js/runtime~main.fc7daea1.js",
+    "runtime~main.js.map": "/altair-ui-team-exam/static/js/runtime~main.fc7daea1.js.map",
+    "static/js/2.39328348.chunk.js": "/altair-ui-team-exam/static/js/2.39328348.chunk.js",
+    "static/js/2.39328348.chunk.js.map": "/altair-ui-team-exam/static/js/2.39328348.chunk.js.map",
+    "index.html": "/altair-ui-team-exam/index.html",
+    "precache-manifest.887a199b71764be7a9e46616c17eb6d0.js": "/altair-ui-team-exam/precache-manifest.887a199b71764be7a9e46616c17eb6d0.js",
+    "service-worker.js": "/altair-ui-team-exam/service-worker.js",
+    "static/css/main.70b0ffa2.chunk.css.map": "/altair-ui-team-exam/static/css/main.70b0ffa2.chunk.css.map"
   }
 }
