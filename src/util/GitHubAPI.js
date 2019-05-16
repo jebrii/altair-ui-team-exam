@@ -3,12 +3,10 @@ function parseRequestParams(description, location, fullTime) {
   // TODO: Optimize this clunky mess (with iterator?)
   let outputString = '';
   if (description) {
-    console.log(`got description. Adding ${description.replace(' ', '+')}`);
     outputString += `description=${description.replace(' ', '+')}`;
   }
   if (location) {
     if (outputString) {
-      console.log(`got location. Adding ${location.replace(' ', '+')}`);
       outputString += '&';
     }
     outputString += `location=${location.replace(' ', '+')}`;
@@ -23,12 +21,19 @@ function parseRequestParams(description, location, fullTime) {
   return outputString;
 }
 
+function parseDateString(dateString) {
+  let newDate = new Date(dateString);
+  let year = newDate.getFullYear();
+  let month = newDate.getMonth();
+  let day = newDate.getDay();
+  if (month < 10) month = '0' + month;
+  if (day < 10) day = '0' + day;
+  return `${year}-${month}-${day}`;
+}
 
 export const GitHubAPI = {
   search(description = '', location = '', fullTime = false, stateSetCallback) {
-    console.log(`initials are ${description}, ${location}, ${fullTime}`);
     const requestParams = parseRequestParams(description, location, fullTime);
-    console.log(`requestParams are ${requestParams}`);
     // Request
     fetch(`http://jobs.github.com/positions.json?${requestParams}`, {
       method: 'GET',
@@ -47,16 +52,16 @@ export const GitHubAPI = {
       id,
       title,
       location,
+      company,
       type,
-      created_at,
-      company
+      created_at
     }) => ({
       id,
       title,
       location,
+      company,
       type,
-      created_at,
-      company
+      created_at: parseDateString(created_at)
     })))
     .then(data => stateSetCallback(data))
     .catch(err => alert(err))
