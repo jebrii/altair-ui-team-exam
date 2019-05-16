@@ -18,3 +18,8 @@ th {
   background-color: #bbb;
   text-align: center;
 }
+
+.sort-arrow  {
+  display: inline;
+  margin-left: 16px;
+}
