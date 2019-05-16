@@ -25,16 +25,39 @@ export default class ResultsList extends Component {
 
   setSortColumn(newIndex) {
     const { index, direction } = this.state.sortColumn;
-    let newDirection = direction;
     if (newIndex === index) {
-      newDirection = direction === 'desc' ? 'asc' : 'desc';
-    }
-    this.setState({
-      sortColumn: {
-        index: newIndex,
-        direction: newDirection
+      switch (direction) {
+        case 'desc':
+          // if sort order is desc and sort is already on selected column,
+          // change to asc
+          this.setState({
+            sortColumn: {
+              index,
+              direction: 'asc'
+            }
+          });
+          break;
+        case 'asc':
+          // if sort order is asc and sort is already on selected column,
+          // change to desc, but set index to  "null" (turn off sort)
+          this.setState({
+            sortColumn: {
+              index: null,
+              direction: 'desc'
+            }
+          });
+          break;
+        default:
+          alert("well, this is awkward [ResultsList.setSortColumn()]")
       }
-    })
+    } else {
+      this.setState({
+        sortColumn: {
+          index: newIndex,
+          direction: 'desc'
+        }
+      })
+    }
   }
 
   sortData(positions, columns) {
@@ -57,24 +80,36 @@ export default class ResultsList extends Component {
 
   renderSortImage(column, index) {
     if (column.sortable) {
-      if (this.state.sortColumn.index === index) {
-        if (this.state.sortColumn.direction === 'asc') {
+      if (this.state.sortColumn.index == index) {
+        if (this.state.sortColumn.direction == 'asc') {
           return (
-            <img className="up-arrow" alt="⬆" />
+            <p className="sort-arrow">⬆</p>
           );
+          // return (
+          //   <img className="up-arrow" alt="⬆" />
+          // );
         } else {
           return (
-            <img className="down-arrow" alt="⬇" />
+            <p className="sort-arrow">⬇</p>
           );
+          // return (
+          //   <img className="down-arrow" alt="⬇" />
+          // );
         }
       }
       return (
-        <img className="placeholder" alt="🗙" />
+        <p className="sort-arrow"></p>
       );
+      // return (
+      //   <img className="placeholder" alt="🗙" />
+      // );
     } else {
       return (
-        <img className="no-sort" alt="✖" />
+        <p className="sort-arrow"></p>
       );
+      // return (
+      //   <img className="no-sort" alt="✖" />
+      // );
     }
   }
 
