@@ -71,7 +71,7 @@ export class QueriesBar extends Component {
             onChange={this.handleFullTimeChange}
             onKeyDown={this.handleKeyDown}
           />
-          Show full-time positions only
+          <span className="label-text">Show full-time positions only</span>
         </label>
 
         <button className="button-confirm" onClick={this.search}>Search</button>

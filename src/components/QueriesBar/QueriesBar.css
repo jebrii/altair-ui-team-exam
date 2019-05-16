@@ -1,0 +1,57 @@
+.QueriesBar {
+  min-width: 70vw;
+  font-family: 'Roboto',sans-serif;
+  margin: 30px;
+}
+
+.text-field {
+  padding: 5px 3px;
+  min-width: 240px;
+  margin: 0 4px;
+  border: 2px solid #61666d;
+}
+
+.label-text  {
+  font-family: 'Roboto',sans-serif;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-right: 15px;
+}
+
+.button-confirm {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.2em solid #282c34;
+  margin:0 0.5em 0.3em 0.5em;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: bold;
+  color:#000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.button-confirm:hover {
+  color:#FFFFFF;
+  background-color:#282c34;
+}
+
+.button-cancel {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.2em solid #61666d;
+  margin:0 0.5em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: bold;
+  color:#000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.button-cancel:hover {
+  color:#FFFFFF;
+  background-color:#61666d;
+}
