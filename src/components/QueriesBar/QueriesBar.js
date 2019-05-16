@@ -40,7 +40,6 @@ export class QueriesBar extends Component {
 
   handleFullTimeChange(e) {
     this.setState({ fullTime: e.target.checked });
-    console.log(`changed fullTime; state is now ${inspect(this.state)}`);
   }
 
   handleKeyDown(e) {
