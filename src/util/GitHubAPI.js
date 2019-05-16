@@ -35,7 +35,7 @@ export const GitHubAPI = {
   search(description = '', location = '', fullTime = false, stateSetCallback) {
     const requestParams = parseRequestParams(description, location, fullTime);
     // Request
-    fetch(`http://jobs.github.com/positions.json?${requestParams}`, {
+    fetch(`https://jobs.github.com/positions.json?${requestParams}`, {
       method: 'GET',
       mode: 'cors'
     })

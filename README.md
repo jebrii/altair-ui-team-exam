@@ -4,7 +4,14 @@ A two-day test to assess Henry's fit for the Altair SmartEdge UI Team
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Running the Applet
+## Viewing the Applet in a Browser
+
+Using GitHub pages, I've deployed the applet to https://jebrii.github.io/altair-ui-team-exam.
+<br><br>
+Vist the link above to view the applet in its full glory.
+You should also not run into the CORS issues when using this method of viewing.
+
+## Running the Applet for Development / Testing
 
 I have made this applet very light, with minimal requirements outside of React.<br>
 Upon downloading it, you should run:
