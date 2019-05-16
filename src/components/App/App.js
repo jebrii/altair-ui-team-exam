@@ -72,6 +72,7 @@ class App extends Component {
           <h1>
             Search GitHub Job Postings
           </h1>
+          <p className="subtext">A single-page React applet by Henry Raschke</p>
         </div>
         <QueriesBar onSearch={this.search} onClear={this.clearResults} />
         <ResultsList positions={this.state.searchResults || []} columns={columns} />

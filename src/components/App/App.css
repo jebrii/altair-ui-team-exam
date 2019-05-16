@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #eee;
+  min-height: 100vh;
+  padding-bottom: 60px;
 }
 
 .App-header {
@@ -11,6 +14,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.subtext {
+  font-size: 0.6em;
+  position: relative;
+  bottom: 20px;
 }
 
 .App-link {
