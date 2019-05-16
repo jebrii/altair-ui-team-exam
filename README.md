@@ -51,14 +51,16 @@ Search data, given parameters provided by QueriesBar to App, is retrieved from
 GitHubAPI.js and passed into ResultsList by App via props. ResultsList then maps
 this and passes individual ResultItem components an individual search result.
 <br><br>
-Given the simplicity of the requirements, this seemed like the best structure to me. <br>
+Given the simplicity of the requirements, this seemed like the best structure to me. <br><br>
 I chose not to further subdivide the QueriesBar component into individual input
 fields because it felt sufficient and organized to handle all the events for the
 inputs in the single component rather than pass callbacks into props of child
-components.<br>
+components.
+<br><br>
 I chose also not to have the sortable headers as their own child components of
 ResultsList, as I wanted to manage all the sorting and sorting events inside of
-ResultsList (for similar reasons as above).<br>
+ResultsList (for similar reasons as above).
+<br><br>
 Added functionalities may merit architecture alterations.
 
 ## Known Issues
@@ -92,7 +94,8 @@ address it too much in depth. Suffice it to say that webpages can be exploited b
 malicious Javascript that sends requests to unauthorized servers that don't share
 an origin (ssl, domain, and port) with the webpage. CORS policy and browsers blocking
 traffic protects against this. Unfortunately, my http://localhost:3000/ sending
-traffic to https://jobs.github.com/ gets blocked by CORS.<br>
+traffic to https://jobs.github.com/ gets blocked by CORS.
+<br><br>
 We were able to circumvent this by opening and insecure browser session for development
 purposes. To do this, we ran the following command in the Terminal:
 <br><br>
@@ -126,6 +129,36 @@ I decided to store the sort order in state and apply a sorting method directly o
 the passed in results props upon render. This way, changing the sort order and
 passing in new search results are entirely independent and do not overwrite eachother.
 
+### Future Features
+
+#### Pagination
+
+In future, I would add pagination to this app. GitHub returns only 50 entries per request, so I'd want the user to be able to click "more" (or something
+to that effect) and be able to get a new batch of results.
+
+#### Render Table on with Results
+
+I think it's ugly that the ResultsList table is still rendered when there are no
+results. I would have the rendering be conditional upon there being props. This is easy, but out of scope and low on the priority list.
+
+#### Notify User when Query Response is Empty
+
+There also should be a "No entries found" feature when the query returns no results.
+
+#### Allow Drilling in to Individual Positions
+
+Positions should be click-able, at which point, more details would come up in
+a modal. This modal might include an image from the company, a detailed description,
+and a link to apply.
+
+#### Allow Adding / Removing Columns
+
+Given the modularity of columns I've allowed for (with the "columns" object in App),
+we could make it so that the user could use checkboxes to change which columns are
+showed in the table. This would require "columns" to be moved to the App's state
+and would need a handler method. It would also require all the data to be given to
+App from GitHubAPI.js (currently, only the necessary columns are passed).
+
 ### Binding and Arrow Functions
 
 One of the benefits of arrow functions inheriting the "this" of their parent scope
@@ -141,13 +174,3 @@ as traditional functions and binding them in the constructor.
 Andrew has informed me that I cannot continue my development career on good terms at
 Altair if I continue my semicolon use. Consider this my last stand, then. I refer
 you in good humor to the [Semicolon Appreciation Society](http://semicolonappreciationsociety.com/).
-
-### Future Features
-
-In future, I would add pagination to this app. GitHub returns only 50 entries per request, so I'd want the user to be able to click "more" (or something
-to that effect) and be able to get a new batch of results.
-<br><br>
-I think it's ugly that the ResultsList table is still rendered when there are no
-results. I would have the rendering be conditional upon there being props. This is easy, but out of scope and low on the priority list.
-<br><br>
-There also should be a "No entries found" feature when the query returns no results.
