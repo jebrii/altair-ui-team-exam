@@ -8,28 +8,7 @@ import ResultsList from '../ResultsList/ResultsList';
 // Import Utilities
 import { GitHubAPI } from '../../util/GitHubAPI';
 
-
-// Variables
-const months = {
-  Jan: "01",
-  Feb: "02",
-  Mar: "03",
-  Apr: "04",
-  May: "05",
-  Jun: "06",
-  Jul: "07",
-  Aug: "08",
-  Sep: "09",
-  Oct: "10",
-  Nov: "11",
-  Dec: "12"
-};
-
-const parseDateString = (inputString) => {
-  const date = new Date(inputString);
-  return `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
-}
-
+//
 const columns = [
   {
     name: "Title",
@@ -49,8 +28,7 @@ const columns = [
   {
     name: "Date Posted",
     prop: "created_at",
-    sortable: true,
-    parseFunction: parseDateString
+    sortable: true
   },
   {
     name: "Type",
@@ -71,7 +49,6 @@ class App extends Component {
     // ... but that's not how I learned it initially; I'm sticking with my norms
     this.search = this.search.bind(this);
     this.clearResults = this.clearResults.bind(this);
-    this.parsePositions = this.parsePositions.bind(this);
   }
 
   search(description, location, fullTime) {
@@ -88,21 +65,6 @@ class App extends Component {
     })
   }
 
-  parsePositions(positions, columns) {
-    return positions.map((position, index) => {
-      for (let i in position) {
-        columns.forEach(column => {
-          if (column.prop === i) {
-            console.log(`matched ${console.log(require('util').inspect(column))} with ${console.log(require('util').inspect(position))}`);
-          }
-        })
-      }
-      // const { parseFunction = i => i } = columns[index];
-      // parseFunction()
-      return position;
-    });
-  }
-
   render() {
     return (
       <div className="App">
@@ -112,7 +74,7 @@ class App extends Component {
           </h1>
         </div>
         <QueriesBar onSearch={this.search} onClear={this.clearResults} />
-        <ResultsList positions={this.parsePositions(this.state.searchResults, columns) || []} columns={columns} />
+        <ResultsList positions={this.state.searchResults || []} columns={columns} />
 
       </div>
     );
