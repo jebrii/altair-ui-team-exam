@@ -1,0 +1,10 @@
+.ResultItem {
+
+}
+
+td {
+  border: 2px solid #61666d;
+  text-align: left;
+  font-size: 0.8em;
+  padding: 2px 4px;
+}
