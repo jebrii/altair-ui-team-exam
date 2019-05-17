@@ -9,7 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Using GitHub pages, I've deployed the applet to https://jebrii.github.io/altair-ui-team-exam.
 <br><br>
 Vist the link above to view the applet in its full glory.
-You should also not run into the CORS issues when using this method of viewing.
+For some reason, this still does not fix the CORS issue.
+You should consider using the command in the "CORS Issue" section below to open a browser and view it there.
 
 ## Running the Applet for Development / Testing
 
@@ -107,6 +108,8 @@ We were able to circumvent this by opening and insecure browser session for deve
 purposes. To do this, we ran the following command in the Terminal:
 <br><br>
 `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security`
+<br><br>
+Note that this will only work on MAC OS and only if you have not messed with the directory structure of the Chrome app.
 
 ### Icons
 
